@@ -1,10 +1,5 @@
 # Microservice-via-Spring-boot
 
-Under development project..!! 
+Will update the details readme file in details soon.. In short, this is a program which was created to understand the spring boot concepts and architecture. 
 
-V1 - 
-Create a microservice with Spring boot
-Connect it with MySQL
-
-V2 - 
-Create API
+This will take you from baiscs to intermediate level..!! 
