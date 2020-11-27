@@ -1,0 +1,50 @@
+package com.ariba.training.web;
+
+import java.util.List;
+
+import org.apache.logging.log4j.CloseableThreadContext.Instance;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.RestTemplate;
+
+import com.ariba.training.dal.ReviewRepository;
+import com.ariba.training.domain.Review;
+
+//acting as a client to active service 
+
+@RestController
+public class ReviewController {
+	
+	@Autowired
+	ReviewRepository dao;
+	
+	@Autowired
+	DiscoveryClient dc;
+	
+	
+	@PostMapping("/reviews")
+	public ResponseEntity<Review> addReview(@RequestBody Review r){
+		int productId = r.getProductId();
+		List<ServiceInstance> instances = dc.getInstances("productservice");
+		//String baseURL = "http://localhost:8081";
+		
+		String baseURL = instances.get(0).getUri().toString();
+		
+		try {
+			RestTemplate template = new RestTemplate();
+			String json = template.getForObject(baseURL+"/products/"+productId, String.class);
+			Review saved = dao.save(r);
+			return new ResponseEntity<Review>(saved, HttpStatus.CREATED);
+		} catch (RestClientException e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+	}
+
+}

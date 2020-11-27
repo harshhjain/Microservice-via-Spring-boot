@@ -1,0 +1,32 @@
+package com.ariba.training.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.ariba.training.dal.ReviewRepository;
+import com.ariba.training.domain.Review;
+
+@RestController
+public class ReviewController {
+	
+	@Autowired
+	ReviewRepository dao;
+	
+	@PostMapping("/reviews")
+	public ResponseEntity<Review> addReview(@RequestBody Review r){
+		int productId = r.getProductId();
+		String baseURL = "http://localhost:8081";
+		
+		RestTemplate template = new RestTemplate();
+		String json = template.getForObject(baseURL+"/products/"+productId, String.class);
+		
+		Review saved = dao.save(r);
+		return new ResponseEntity<Review>(saved, HttpStatus.CREATED);
+	}
+
+}

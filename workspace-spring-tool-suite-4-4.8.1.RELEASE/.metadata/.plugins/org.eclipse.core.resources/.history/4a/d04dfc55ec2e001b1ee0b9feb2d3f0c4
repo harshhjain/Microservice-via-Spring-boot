@@ -1,0 +1,26 @@
+package com.ariba.training;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.ariba.training.dal.ProductDAO;
+import com.ariba.training.dal.ProductDAOInMemImpl;
+import com.ariba.training.service.ProductService;
+import com.ariba.training.service.ProductServiceImpl;
+
+@Configuration
+public class ProductsApplicationConfiguration {
+	
+	@Bean
+	public ProductDAO daoObj() {
+		ProductDAOInMemImpl dao= new ProductDAOInMemImpl();
+		return dao;
+	}
+
+	@Bean
+	public ProductService serviceObj() {
+		ProductServiceImpl service = new ProductServiceImpl();
+		service.setDao(daoObj());
+		return service; 
+	}
+}

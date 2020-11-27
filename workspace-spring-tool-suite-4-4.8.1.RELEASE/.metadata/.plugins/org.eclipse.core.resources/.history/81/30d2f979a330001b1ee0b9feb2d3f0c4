@@ -1,0 +1,7 @@
+package com.ariba.training.web;
+
+public interface ProductService {
+	
+	public Product getById(int id);
+
+}

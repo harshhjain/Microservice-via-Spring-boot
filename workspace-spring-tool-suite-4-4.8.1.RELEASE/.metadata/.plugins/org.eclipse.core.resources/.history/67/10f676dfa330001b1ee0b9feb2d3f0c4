@@ -1,0 +1,12 @@
+package com.ariba.training.web;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+import com.ariba.training.domain.Product;
+
+@FeignClient(name = "productservice")
+public interface ProductService {
+	
+	public Product getById(int id);
+
+}

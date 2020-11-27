@@ -1,0 +1,10 @@
+package com.ariba.training.domain;
+
+public class Review {
+	
+	int id;
+	String reviewer;
+	String reviewText;
+	float rating;
+
+}

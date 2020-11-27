@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 packages to &apos;products/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;LayeredApp&apos;&#x0D;&#x0A;- Destination element: &apos;products/src/main/java&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     LayeredApp/src/com.ariba.training.domain&#x0D;&#x0A;     LayeredApp/src/com.ariba.training.ui&#x0D;&#x0A;     LayeredApp/src/com.ariba.training.dal&#x0D;&#x0A;     LayeredApp/src/com.ariba.training.service" description="Copy packages" destination="=products/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src&lt;com.ariba.training.domain" element2="/src&lt;com.ariba.training.ui" element3="/src&lt;com.ariba.training.dal" element4="/src&lt;com.ariba.training.service" flags="589830" fragments="4" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1606282395775" version="1.0"/>
+</session>

@@ -1,0 +1,15 @@
+package com.ariba.training.web;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.ariba.training.domain.Product;
+
+@FeignClient(name = "productservice")
+public interface ProductService {
+	
+	@GetMapping("/products/{id}")
+	public Product getById(@PathVariable("id")int id);
+
+}

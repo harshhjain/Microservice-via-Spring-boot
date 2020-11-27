@@ -1,0 +1,19 @@
+package com.ariba.training;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+import com.ariba.training.ui.ProductConsoleUI;
+
+@SpringBootApplication
+public class ProductsApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext springContainer = 
+				SpringApplication.run(ProductsApplication.class, args);
+		ProductConsoleUI ui = springContainer.getBean(ProductConsoleUI.class);
+		ui.createProductWithUI();
+	}
+
+}

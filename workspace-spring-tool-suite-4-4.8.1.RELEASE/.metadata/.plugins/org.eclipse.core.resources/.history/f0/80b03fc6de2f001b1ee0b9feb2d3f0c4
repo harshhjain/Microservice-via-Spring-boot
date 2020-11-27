@@ -1,0 +1,5 @@
+package com.ariba.training.domain;
+
+public class Review {
+
+}
